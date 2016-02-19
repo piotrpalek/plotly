@@ -31,7 +31,7 @@
   "jspm": {
     "dependencies": {
       "ember-utils": "github:ember-building-blocks/ember-utils@^0.4.0",
-      "plotly": "npm:plotly.js@^1.5.2"
+      "plotlyjs": "github:plotly/plotly.js@^1.5.2"
     },
     "format": "es6"
   },

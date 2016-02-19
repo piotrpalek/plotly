@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import * as Utils from 'ember-utils';
+import Plotly from 'plotlyjs/dist/plotly';
 
 const { observer, run, computed } = Ember;
 
