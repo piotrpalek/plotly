@@ -1,0 +1,53 @@
+{
+  "name": "ember-vcl-plotly",
+  "version": "0.1.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "cd tmp && gulp watch",
+    "docs": "./node_modules/ember-vcl-build-demo/bin/docs.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ember-vcl/plotly.git"
+  },
+  "homepage": "https://github.com/ember-vcl/doc",
+  "license": "MIT",
+  "author": "The Ember VCL authors",
+  "contributors": [
+    {
+      "name": "Thomas Hoppe",
+      "email": "thomas.hoppe@n-fuse.de"
+    }
+  ],
+  "devDependencies": {
+    "ember-vcl-build-demo": "ember-vcl/build-demo#v4.0.0"
+  },
+  "keywords": [
+    "web-component",
+    "ember",
+    "VCL"
+  ],
+  "jspm": {
+    "dependencies": {
+      "ember-utils": "github:ember-building-blocks/ember-utils@^0.4.0",
+      "plotly": "npm:plotly.js@^1.5.2"
+    },
+    "format": "es6"
+  },
+  "vcl": {
+    "demo": true,
+    "resize": false,
+    "needs": [],
+    "provides": [
+      "plotly"
+    ],
+    "categories": [
+      {
+        "title": "Inputs",
+        "itemPriority": 10,
+        "priority": 80
+      }
+    ]
+  }
+}
