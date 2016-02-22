@@ -17,12 +17,32 @@ const PlotlyComponent = Ember.Component.extend({
   data: null,
   title: '',
   margin: null,
+  showLegend: true,
 
-  plotlyLayout: computed('title', 'margin', function() {
+  displayModeBar: true,
+  displayLogo: false,
+  showLink: false,
+  staticPlot: false,
+  scrollZoom: true,
+
+  plotlyLayout: computed('title', 'margin', 'showLegend', function() {
     const title = this.get('title');
     const margin = this.get('margin');
+    const showLegend = this.get('showLegend');
 
-    return { title, margin };
+    return { title, margin, showLegend };
+  }),
+
+  plotlyConfig: computed('displayModeBar', 'displayLogo', 'showLink',
+  'staticPlot', 'scrollZoom',
+  function() {
+    const displayModeBar = this.get('displayModeBar');
+    const displayLogo = this.get('displayLogo');
+    const showLink = this.get('showLink');
+    const staticPlot = this.get('staticPlot')
+    const scrollZoom = this.get('scrollZoom');
+
+    return { displayModeBar, displayLogo, showLink, staticPlot, scrollZoom };
   }),
 
   init() {
@@ -31,19 +51,30 @@ const PlotlyComponent = Ember.Component.extend({
     this.set('margin', {
       t: 0
     });
+    this.get('plotlyLayout');
   },
 
   didInsertElement() {
     this._super(...arguments);
-    Plotly.plot(this.element, this.get('data'), this.get('plotlyLayout'));
+    Plotly.plot(
+      this.element,
+      this.get('data'),
+      this.get('plotlyLayout'),
+      this.get('plotlyConfig')
+    );
   },
 
-  dataObserver: observer('data.[]', function() {
+  dataObserver: observer('data.[]', 'plotlyLayout', 'plotlyConfig', function() {
     run.scheduleOnce('render', this, this.handleDataChange);
   }),
 
   handleDataChange() {
-    Plotly.newPlot(this.element, this.get('data'), this.get('plotlyLayout'));
+    Plotly.newPlot(
+      this.element,
+      this.get('data'),
+      this.get('plotlyLayout'),
+      this.get('plotlyConfig')
+    );
   }
 });
 
