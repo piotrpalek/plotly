@@ -47,10 +47,14 @@ const PlotlyComponent = Ember.Component.extend({
 
   init() {
     this._super(...arguments);
-    this.set('data', []);
-    this.set('margin', {
-      t: 0
-    });
+
+    if(!this.get('data')) {
+      this.set('data', []);
+    }
+
+    if(!this.get('margin')) {
+      this.set('margin', { t: 0 });
+    }
 
     // get computed properties for observers to trigger correctly
     this.get('plotlyLayout');
