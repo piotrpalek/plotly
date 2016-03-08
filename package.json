@@ -1,6 +1,6 @@
 {
   "name": "ember-vcl-plotly",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "",
   "main": "main.js",
   "scripts": {
@@ -31,7 +31,7 @@
   "jspm": {
     "dependencies": {
       "ember-utils": "github:ember-building-blocks/ember-utils@^0.4.0",
-      "plotlyjs": "github:plotly/plotly.js@^1.5.2"
+      "plotlyjs": "github:plotly/plotly.js@^1.6.3"
     },
     "format": "es6"
   },
