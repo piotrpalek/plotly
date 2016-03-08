@@ -63,19 +63,14 @@ const PlotlyComponent = Ember.Component.extend({
 
   didInsertElement() {
     this._super(...arguments);
-    Plotly.plot(
-      this.element,
-      this.get('data'),
-      this.get('plotlyLayout'),
-      this.get('plotlyConfig')
-    );
+    this.recreatePlot();
   },
 
   dataObserver: observer('data.[]', 'plotlyLayout', 'plotlyConfig', function() {
-    run.scheduleOnce('render', this, this.handleDataChange);
+    run.scheduleOnce('render', this, this.recreatePlot);
   }),
 
-  handleDataChange() {
+  recreatePlot() {
     Plotly.newPlot(
       this.element,
       this.get('data'),
