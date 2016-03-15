@@ -7,6 +7,9 @@ const { observer, run, computed } = Ember;
 /**
 Plotly.js component
 
+For all options available in this component check the [plotly docs](https://plot.ly/javascript/reference/)
+for more info on how to set them
+
 ## Demo
 
 @demo example1
@@ -14,15 +17,50 @@ Plotly.js component
 */
 const PlotlyComponent = Ember.Component.extend({
   layout: layout,
+  /**
+  passes the data attribute to plotly.js
+  @public
+  */
   data: null,
+  /**
+  sets the plot's title
+  @public
+  */
   title: '',
+  /**
+  sets the plot's margin
+  @public
+  */
   margin: null,
+  /**
+  sets the plot's showLegend attribute
+  @public
+  */
   showLegend: true,
-
+  /**
+  sets the plot's displayModeBar attribute
+  @public
+  */
   displayModeBar: true,
+  /**
+  sets the plot's displayLogo attribute
+  @public
+  */
   displayLogo: false,
+  /**
+  sets the plot's showLink attribute
+  @public
+  */
   showLink: false,
+  /**
+  sets the plot's staticPlot attribute
+  @public
+  */
   staticPlot: false,
+  /**
+  sets the plot's scrollZoom attribute
+  @public
+  */
   scrollZoom: true,
 
   plotlyLayout: computed('title', 'margin', 'showLegend', function() {
