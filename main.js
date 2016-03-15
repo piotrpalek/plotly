@@ -59,10 +59,10 @@ const PlotlyComponent = Ember.Component.extend({
     // get computed properties for observers to trigger correctly
     this.get('plotlyLayout');
     this.get('plotlyConfig');
-    this.set('_boundPlotlyClick', run.bind(this, this.get('plotlyClick')));
+    this.set('_boundPlotlyClick', run.bind(this, this.get('boundClickHandler')));
   },
 
-  plotlyClick(eventData) {
+  boundClickHandler(eventData) {
     this.sendAction('plotlyClick', eventData);
   },
 
